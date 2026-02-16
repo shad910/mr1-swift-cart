@@ -54,25 +54,54 @@
 
         <!-- Right: Cart Icon + Mobile Menu Button -->
         <section class="navbar-end flex items-center gap-2">
-          <!-- Cart Icon -->
-          <button
-            class="btn btn-ghost btn-circle text-slate-600 hover:text-indigo-500"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <!-- Cart Dropdown -->
+          <div class="dropdown dropdown-end">
+            <div
+              tabindex="0"
+              role="button"
+              class="btn btn-ghost btn-circle hover:text-indigo-500"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-5-9v9"
-              />
-            </svg>
-          </button>
+              <div class="indicator">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span id="cart-count" class="badge badge-sm indicator-item"
+                  >0</span
+                >
+              </div>
+            </div>
+
+            <div
+              tabindex="0"
+              class="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-64 shadow"
+            >
+              <div class="card-body">
+                <span id="cart-items-text" class="text-lg font-bold"
+                  >0 Items</span
+                >
+                <div id="cart-items-list" class="flex flex-col gap-2"></div>
+                <span id="cart-subtotal" class="text-info mt-2.5"
+                  >Subtotal: $0</span
+                >
+                <div class="card-actions">
+                  <button class="btn btn-primary btn-block">
+                    <i class="fa-solid fa-dollar-sign"></i> Buy Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Mobile Menu Toggle (Visible on small screens) -->
           <div class="dropdown dropdown-end md:hidden">
@@ -141,7 +170,7 @@
       </section>
 
       <!-- Why Choose Us Section -->
-      <section class="py-16 px-6">
+      <section class="py-14 px-6 bg-gray-100">
         <div class="max-w-6xl mx-auto text-center">
           <!-- Heading -->
           <h2 class="text-3xl font-bold text-gray-800">Why Choose Us</h2>
@@ -223,7 +252,52 @@
         </div>
       </section>
 
-      
+      <!-- Trending Products Section -->
+      <section class="w-10/12 mx-auto py-16">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">Trending Products</h2>
+        <div
+          id="top-rated-container"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-self-center gap-8"
+        ></div>
+      </section>
+
+      <!-- Categories and Products Section -->
+      <section class="py-14">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+          Shop by Category
+        </h2>
+        <div
+          id="category-container"
+          class="flex flex-wrap justify-center items-center gap-0.5 md:gap-5 my-8"
+        ></div>
+        <div
+          id="card-container"
+          class="bg-gray-100 w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-self-center gap-3 lg:gap-8 p-3 lg:p-8 rounded-xl"
+        >
+          <div class="text-center col-span-full">
+            <figure>
+              <img
+                src="./assets/alert-error.png"
+                alt="Alert Image"
+                class="w-24 h-24 mx-auto mt-4 opacity-50"
+              />
+              <figcaption class="text-xl font-semibold text-gray-500">
+                Please select a category
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Modal Section -->
+        <dialog id="product_details" class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box">
+            <div id="product-details-container"></div>
+          </div>
+          <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+          </form>
+        </dialog>
+      </section>
     </main>
 
     <!-- Footer Section -->
