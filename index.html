@@ -54,8 +54,28 @@
 
         <!-- Right: Cart Icon + Mobile Menu Button -->
         <section class="navbar-end flex items-center gap-2">
+          <!-- Cart Icon -->
+          <button
+            class="btn btn-ghost btn-circle text-slate-600 hover:text-indigo-500"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-5-9v9"
+              />
+            </svg>
+          </button>
+
           <!-- Mobile Menu Toggle (Visible on small screens) -->
-          <div class="dropdown md:hidden">
+          <div class="dropdown dropdown-end md:hidden">
             <label tabindex="0" class="btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -82,26 +102,6 @@
               <li><a class="hover:text-indigo-500 transition">Contact</a></li>
             </ul>
           </div>
-
-          <!-- Cart Icon -->
-          <button
-            class="btn btn-ghost btn-circle text-slate-600 hover:text-indigo-500"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-5-9v9"
-              />
-            </svg>
-          </button>
         </section>
       </nav>
     </header>
@@ -141,7 +141,89 @@
       </section>
 
       <!-- Why Choose Us Section -->
-      <section></section>
+      <section class="py-16 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+          <!-- Heading -->
+          <h2 class="text-3xl font-bold text-gray-800">Why Choose Us</h2>
+          <p class="text-gray-500 mt-2 mb-12">
+            We provide the best shopping experience with top-notch services.
+          </p>
+
+          <!-- Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Card 1 -->
+            <div
+              class="relative bg-white rounded-xl p-6 pt-10 shadow-sm hover:shadow-md transition duration-300 text-left"
+            >
+              <!-- Icon -->
+              <div
+                class="absolute -top-5 left-6 w-12 h-12 flex items-center justify-center rounded-lg bg-indigo-100 shadow-sm"
+              >
+                <i class="fa-solid fa-truck text-indigo-600 text-xl"></i>
+              </div>
+
+              <h3 class="font-semibold text-gray-800 mb-2">Fast Delivery</h3>
+              <p class="text-gray-500 text-sm">
+                Get your orders delivered to your doorstep quickly and
+                efficiently.
+              </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="relative bg-white rounded-xl p-6 pt-10 shadow-sm hover:shadow-md transition duration-300 text-left"
+            >
+              <div
+                class="absolute -top-5 left-6 w-12 h-12 flex items-center justify-center rounded-lg bg-indigo-100 shadow-sm"
+              >
+                <i class="fa-solid fa-headphones text-indigo-600 text-xl"></i>
+              </div>
+
+              <h3 class="font-semibold text-gray-800 mb-2">24/7 Support</h3>
+              <p class="text-gray-500 text-sm">
+                Our support team is available around the clock to assist you.
+              </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="relative bg-white rounded-xl p-6 pt-10 shadow-sm hover:shadow-md transition duration-300 text-left"
+            >
+              <div
+                class="absolute -top-5 left-6 w-12 h-12 flex items-center justify-center rounded-lg bg-indigo-100 shadow-sm"
+              >
+                <i
+                  class="fa-solid fa-shield-halved text-indigo-600 text-xl"
+                ></i>
+              </div>
+
+              <h3 class="font-semibold text-gray-800 mb-2">Secure Payment</h3>
+              <p class="text-gray-500 text-sm">
+                Experience safe and secure transactions with our encrypted
+                payment systems.
+              </p>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              class="relative bg-white rounded-xl p-6 pt-10 shadow-sm hover:shadow-md transition duration-300 text-left"
+            >
+              <div
+                class="absolute -top-5 left-6 w-12 h-12 flex items-center justify-center rounded-lg bg-indigo-100 shadow-sm"
+              >
+                <i class="fa-solid fa-rotate-left text-indigo-600 text-xl"></i>
+              </div>
+
+              <h3 class="font-semibold text-gray-800 mb-2">Easy Returns</h3>
+              <p class="text-gray-500 text-sm">
+                Not satisfied? Return your products easily within 30 days.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
     </main>
 
     <!-- Footer Section -->
