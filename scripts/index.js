@@ -1,3 +1,12 @@
+const handleAllCategory = () => {
+  removeActiveClass();
+
+  const allBtn = document.getElementById("all");
+  allBtn.classList.add("active");
+
+  loadAllProducts();
+};
+
 const addToCart = async (id) => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -81,6 +90,20 @@ const removeActiveClass = () => {
   activeBtns.forEach((btn) => btn.classList.remove("active"));
 };
 
+const loadAllProducts = () => {
+  manageSpinner(true);
+  fetch(`https://fakestoreapi.com/products`)
+    .then((response) => response.json())
+    .then((data) => {
+      displayProducts(data);
+      manageSpinner(false);
+    })
+    .catch((error) => {
+      console.error("Error fetching all products:", error);
+      manageSpinner(false);
+    });
+};
+
 const loadCategories = () => {
   fetch(`https://fakestoreapi.com/products/categories`)
     .then((response) => response.json())
@@ -93,12 +116,11 @@ const loadProductsByCategory = (category) => {
   fetch(`https://fakestoreapi.com/products/category/${category}`)
     .then((response) => response.json())
     .then((data) => {
-
       removeActiveClass();
 
       const clickedBtn = document.getElementById(category);
       clickedBtn.classList.add("active");
-      
+
       displayProducts(data);
     })
     .catch((error) =>
@@ -133,10 +155,23 @@ const displayCategories = (categories) => {
 
   categoryContainer.innerHTML = "";
 
+  // Extra Work For All Button
+  const allBtnWrapper = document.createElement("div");
+  allBtnWrapper.innerHTML = `
+    <button onclick="handleAllCategory()" id="all" class="btn btn-xs rounded-3xl text-xs md:text-base sm:btn-sm md:btn-md btn-outline btn-primary active">
+      ALL
+    </button>
+  `;
+  categoryContainer.appendChild(allBtnWrapper);
+
+  // Other Categories
   for (const category of categories) {
     const categoryBtn = document.createElement("div");
     categoryBtn.innerHTML = `
-    <button onclick="loadProductsByCategory(&quot;${category}&quot;)" id="${category}" class="btn btn-xs text-xs  md:text-base sm:btn-sm md:btn-md btn-outline btn-primary">${category.toUpperCase()}</button> `;
+      <button onclick="loadProductsByCategory(&quot;${category}&quot;)" id="${category}" class="btn btn-xs md:text-base sm:btn-sm md:btn-md btn-outline btn-primary rounded-3xl text-xs">
+        ${category.toUpperCase()}
+      </button>
+    `;
     categoryContainer.appendChild(categoryBtn);
   }
 };
@@ -188,7 +223,7 @@ const displayProducts = (products) => {
         <i class="fa-regular fa-eye"></i> Details
       </button>
 
-      <button onclick="addToCart(${product.id}); this.disabled=true; this.classList.add('opacity-50','cursor-not-allowed'); alert('${product.title.replace(/'/g, "\\'")} has been added to your cart!')" class="btn btn-sm btn-primary flex-1" ${JSON.parse(localStorage.getItem("cart") || "[]").includes(product.id) ? "disabled class='btn btn-sm btn-primary flex-1 opacity-50 cursor-not-allowed'" : ""}>
+      <button onclick="addToCart(${product.id}); this.disabled=true; this.classList.add('opacity-50','cursor-not-allowed'); alert('${product.title.replace(/'/g, "\\'")} has been added to your cart!')" class="btn btn-sm bg-indigo-500 hover:bg-indigo-600 text-white flex-1" ${JSON.parse(localStorage.getItem("cart") || "[]").includes(product.id) ? "disabled class='btn btn-sm btn-primary flex-1 opacity-50 cursor-not-allowed'" : ""}>
         <i class="fa-solid fa-cart-shopping"></i> Add
       </button>
     </div>
@@ -200,6 +235,79 @@ const displayProducts = (products) => {
     cardContainer.appendChild(productCard);
 
     manageSpinner(false);
+  }
+};
+
+const displayTopRatedProducts = (products) => {
+  const container = document.getElementById("top-rated-container");
+  container.innerHTML = "";
+
+  for (const product of products) {
+    const productCard = document.createElement("div");
+
+    productCard.innerHTML = `
+      
+      <div class="card shadow-md border border-base-200">
+
+        <!-- Image -->
+        <figure class="px-4 pt-4 bg-base-200">
+          <img
+            src="${product.image}"
+            alt="Product Image"
+            class="rounded-xl h-48 p-4 object-contain"
+          />
+        </figure>
+
+        <div class="card-body p-4 space-y-2">
+          
+          <!-- Category + Rating -->
+          <div class="flex justify-between items-center text-xs">
+
+            <span class="badge badge-outline badge-primary capitalize">
+              ${product.category}
+            </span>
+
+            <div class="flex items-center gap-1 text-warning">
+              ⭐ 
+              <span class="text-base-content text-xs">
+                ${product.rating.rate} (${product.rating.count})
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Title -->
+          <h2 class="card-title text-sm font-semibold leading-tight truncate">
+            ${product.title}
+          </h2>
+
+          <!-- Price -->
+          <p class="text-lg font-bold text-base-content">
+            $${product.price}
+          </p>
+
+          <!-- Buttons -->
+          <div class="flex gap-5 pt-2">
+
+            <button 
+              onclick="displayProductDetails(${JSON.stringify(product).replace(/"/g, "&quot;")})"
+              class="btn btn-sm btn-outline flex-1">
+              <i class="fa-regular fa-eye"></i> Details
+            </button>
+
+            <button onclick="addToCart(${product.id}); this.disabled=true; this.classList.add('opacity-50','cursor-not-allowed'); alert('${product.title.replace(/'/g, "\\'")} has been added to your cart!')" class="btn btn-sm bg-indigo-500 hover:bg-indigo-600 text-white flex-1">
+              <i class="fa-solid fa-cart-shopping"></i> Add
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+    container.appendChild(productCard);
   }
 };
 
@@ -267,11 +375,11 @@ const displayProductDetails = (product) => {
                     </span>
 
                     <div onclick="addToCart(${product.id})" class="flex gap-2">
-                        <button onclick="addToCart(${product.id}); this.disabled=true; this.classList.add('opacity-50','cursor-not-allowed'); alert('${product.title.replace(/'/g, "\\'")} has been added to your cart!')" class="btn btn-sm btn-primary flex-1" ${JSON.parse(localStorage.getItem("cart") || "[]").includes(product.id) ? "disabled class='btn btn-sm btn-primary flex-1 opacity-50 cursor-not-allowed'" : ""}>
+                        <button onclick="addToCart(${product.id}); this.disabled=true; this.classList.add('opacity-50','cursor-not-allowed'); alert('${product.title.replace(/'/g, "\\'")} has been added to your cart!')" class="btn btn-sm bg-indigo-500 hover:bg-indigo-600 text-white flex-1" ${JSON.parse(localStorage.getItem("cart") || "[]").includes(product.id) ? "disabled class='btn btn-sm bg-indigo-500 hover:bg-indigo-600 text-white opacity-50 cursor-not-allowed'" : ""}>
                             <i class="fa-solid fa-cart-shopping"></i> Add
                         </button>
 
-                        <button class="btn btn-primary btn-sm">
+                        <button class="btn btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
                            <i class="fa-solid fa-dollar-sign"></i> Buy Now
                         </button>
                     </div>
@@ -284,79 +392,7 @@ const displayProductDetails = (product) => {
   document.getElementById("product_details").showModal();
 };
 
-const displayTopRatedProducts = (products) => {
-  const container = document.getElementById("top-rated-container");
-  container.innerHTML = "";
-
-  for (const product of products) {
-    const productCard = document.createElement("div");
-
-    productCard.innerHTML = `
-      
-      <div class="card shadow-md border border-base-200">
-
-        <!-- Image -->
-        <figure class="px-4 pt-4 bg-base-200">
-          <img
-            src="${product.image}"
-            alt="Product Image"
-            class="rounded-xl h-48 p-4 object-contain"
-          />
-        </figure>
-
-        <div class="card-body p-4 space-y-2">
-          
-          <!-- Category + Rating -->
-          <div class="flex justify-between items-center text-xs">
-
-            <span class="badge badge-outline badge-primary capitalize">
-              ${product.category}
-            </span>
-
-            <div class="flex items-center gap-1 text-warning">
-              ⭐ 
-              <span class="text-base-content text-xs">
-                ${product.rating.rate} (${product.rating.count})
-              </span>
-            </div>
-
-          </div>
-
-          <!-- Title -->
-          <h2 class="card-title text-sm font-semibold leading-tight truncate">
-            ${product.title}
-          </h2>
-
-          <!-- Price -->
-          <p class="text-lg font-bold text-base-content">
-            $${product.price}
-          </p>
-
-          <!-- Buttons -->
-          <div class="flex gap-5 pt-2">
-
-            <button 
-              onclick="displayProductDetails(${JSON.stringify(product).replace(/"/g, "&quot;")})"
-              class="btn btn-sm btn-outline flex-1">
-              <i class="fa-regular fa-eye"></i> Details
-            </button>
-
-            <button onclick="addToCart(${product.id}); this.disabled=true; this.classList.add('opacity-50','cursor-not-allowed'); alert('${product.title.replace(/'/g, "\\'")} has been added to your cart!')" class="btn btn-sm btn-primary flex-1">
-              <i class="fa-solid fa-cart-shopping"></i> Add
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `;
-
-    container.appendChild(productCard);
-  }
-};
-
-updateCartUI();
 loadCategories();
 loadTopRatedProducts();
+loadAllProducts();
+updateCartUI();

@@ -135,12 +135,12 @@ All product data is fetched from the **FakeStore API**. Below are the endpoints 
 | **Get Products by Category** 🛍️  | GET    | Fetch products from a specific category        | `https://fakestoreapi.com/products/category/${category}` |
 | **Get Single Product Detail** 🛍️ | GET    | Fetch detailed information of a single product | `https://fakestoreapi.com/products/${id}`                |
 
-
 ## �📂 Project Structure
 
 ```
 mr1-swift-cart/
-├── index.html              # Main HTML file
+├── index.html              # Home page with featured products
+├── products.html           # Products page with category filtering
 ├── README.md               # Project documentation
 ├── tailwind.config.js      # Tailwind CSS configuration
 ├── assets/                 # Static assets
@@ -149,7 +149,7 @@ mr1-swift-cart/
 │   ├── alert-error.png
 │   └── reference-design/
 ├── scripts/
-│   └── index.js            # Main JavaScript file
+│   └── index.js            # Main JavaScript file (used by both pages)
 └── utilities/              # Utility files (if any)
 ```
 
@@ -187,11 +187,11 @@ mr1-swift-cart/
 
 ## 🌐 Live Demo
 
-**Live Website**: [SwiftCart - Live Demo](#) _(Add your deployment URL here)_
+**Live Website**: [SwiftCart - Live Link](https://mr1-swift-cart.netlify.app/)
 
 ### Deployed On
 
-- **Planned**: GitHub Pages | Netlify
+- **Netlify**: https://mr1-swift-cart.netlify.app/
 
 ---
 
@@ -200,10 +200,10 @@ mr1-swift-cart/
 **Md Sahadot Hossen Shad**
 
 - Email: [shadshs91@gmail.com](mailto:shadshs91@gmail.com)
+- Facebook: [shadshs91](https://www.facebook.com/shadshs91/)
+- Instagram: [@shadshs91](https://www.instagram.com/shadshs91/)
 - Twitter: [@shadshs91](https://x.com/shadshs91)
 - LinkedIn: [Md Sahadot Hossen Shad](https://www.linkedin.com/in/md-sahadot-hossen-shad-838251345/)
-- Instagram: [@shadshs91](https://www.instagram.com/shadshs91/)
-- Facebook: [shadshs91](https://www.facebook.com/shadshs91/)
 
 ---
 
