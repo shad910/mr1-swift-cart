@@ -66,7 +66,7 @@ A responsive and dynamic e-commerce web application built with modern web techno
 
 ## 📋 Table of Contents
 
-- [About](##about)
+- [About](#about)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
