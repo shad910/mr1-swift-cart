@@ -67,6 +67,15 @@ const updateCartUI = async () => {
     "Subtotal: $" + subtotal.toFixed(2);
 };
 
+const manageSpinner = (isLoading) => {
+  const spinner = document.getElementById("spinner");
+  if (isLoading) {
+    spinner.classList.remove("hidden");
+  } else {
+    spinner.classList.add("hidden");
+  }
+};
+
 const loadCategories = () => {
   fetch(`https://fakestoreapi.com/products/categories`)
     .then((response) => response.json())
@@ -75,6 +84,7 @@ const loadCategories = () => {
 };
 
 const loadProductsByCategory = (category) => {
+  manageSpinner(true);
   fetch(`https://fakestoreapi.com/products/category/${category}`)
     .then((response) => response.json())
     .then((data) => displayProducts(data))
@@ -126,7 +136,7 @@ const displayProducts = (products) => {
   for (const product of products) {
     const productCard = document.createElement("div");
     productCard.innerHTML = `
-        <div class="card bg-base-100 shadow-md border border-base-200">
+        <div class="card  shadow-md border border-base-200">
   
   <!-- Image -->
   <figure class="px-4 pt-4 bg-base-200">
@@ -175,6 +185,8 @@ const displayProducts = (products) => {
 
     `;
     cardContainer.appendChild(productCard);
+
+    manageSpinner(false);
   }
 };
 
@@ -268,7 +280,7 @@ const displayTopRatedProducts = (products) => {
 
     productCard.innerHTML = `
       
-      <div class="card bg-base-100 shadow-md border border-base-200">
+      <div class="card shadow-md border border-base-200">
 
         <!-- Image -->
         <figure class="px-4 pt-4 bg-base-200">

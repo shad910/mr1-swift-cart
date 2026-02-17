@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Title and Favicon -->
     <title>Swift Cart</title>
     <link
       rel="shortcut icon"
@@ -263,16 +264,29 @@
 
       <!-- Categories and Products Section -->
       <section class="py-14">
+        <!-- title section -->
         <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
           Shop by Category
         </h2>
+
+        <!-- Category Container -->
         <div
           id="category-container"
           class="flex flex-wrap justify-center items-center gap-0.5 md:gap-5 my-8"
         ></div>
+
+        <!-- Spinner Section -->
+        <section
+          id="spinner"
+          class="relative hidden"
+        >
+          <span class="absolute left-1/2 top-4 loading loading-spinner text-primary text-xl transform -translate-x-1/2 -translate-y-1/2"></span>
+        </section>
+
+        <!-- Card Container -->
         <div
           id="card-container"
-          class="bg-gray-100 w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-self-center gap-3 lg:gap-8 p-3 lg:p-8 rounded-xl"
+          class="bg-gray-100 w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-self-center gap-5 lg:gap-8 p-5 lg:p-8 rounded-xl"
         >
           <div class="text-center col-span-full">
             <figure>
