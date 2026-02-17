@@ -76,6 +76,11 @@ const manageSpinner = (isLoading) => {
   }
 };
 
+const removeActiveClass = () => {
+  const activeBtns = document.querySelectorAll(".active");
+  activeBtns.forEach((btn) => btn.classList.remove("active"));
+};
+
 const loadCategories = () => {
   fetch(`https://fakestoreapi.com/products/categories`)
     .then((response) => response.json())
@@ -87,7 +92,15 @@ const loadProductsByCategory = (category) => {
   manageSpinner(true);
   fetch(`https://fakestoreapi.com/products/category/${category}`)
     .then((response) => response.json())
-    .then((data) => displayProducts(data))
+    .then((data) => {
+
+      removeActiveClass();
+
+      const clickedBtn = document.getElementById(category);
+      clickedBtn.classList.add("active");
+      
+      displayProducts(data);
+    })
     .catch((error) =>
       console.error("Error fetching products by category:", error),
     );
@@ -123,7 +136,7 @@ const displayCategories = (categories) => {
   for (const category of categories) {
     const categoryBtn = document.createElement("div");
     categoryBtn.innerHTML = `
-    <button onclick="loadProductsByCategory(&quot;${category}&quot;)" class="btn btn-xs text-xs  md:text-base sm:btn-sm md:btn-md btn-outline btn-primary">${category.toUpperCase()}</button> `;
+    <button onclick="loadProductsByCategory(&quot;${category}&quot;)" id="${category}" class="btn btn-xs text-xs  md:text-base sm:btn-sm md:btn-md btn-outline btn-primary">${category.toUpperCase()}</button> `;
     categoryContainer.appendChild(categoryBtn);
   }
 };

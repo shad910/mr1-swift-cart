@@ -30,7 +30,12 @@
     ></script>
 
     <!-- Style Section -->
-    <style></style>
+    <style>
+      .active {
+        background-color: #3B25C1;
+        color: white;
+      }
+    </style>
   </head>
   <body class="flex flex-col">
     <header>
@@ -276,11 +281,10 @@
         ></div>
 
         <!-- Spinner Section -->
-        <section
-          id="spinner"
-          class="relative hidden"
-        >
-          <span class="absolute left-1/2 top-4 loading loading-spinner text-primary text-xl transform -translate-x-1/2 -translate-y-1/2"></span>
+        <section id="spinner" class="relative hidden">
+          <span
+            class="absolute left-1/2 top-4 loading loading-spinner text-primary text-xl transform -translate-x-1/2 -translate-y-1/2"
+          ></span>
         </section>
 
         <!-- Card Container -->
