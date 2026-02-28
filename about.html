@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Title and Favicon -->
-    <title>Swift Cart</title>
+    <title>About Us - Swift Cart</title>
     <link
       rel="shortcut icon"
       href="./assets/swift-cart-logo.png"
@@ -31,23 +31,21 @@
 
     <!-- Style Section -->
     <style>
-      .active {
-        background-color: #615fff;
-        color: white;
-      }
-      #product_route {
+      #about_route {
         color: #615fff;
       }
     </style>
   </head>
-  <body>
+  <body class="flex flex-col">
     <!-- Header Section -->
     <header>
       <!-- Navbar Section-->
       <nav class="navbar lg:w-11/12 mx-auto">
         <!-- Left: Logo -->
         <section class="navbar-start">
-          <a href="./index.html" class="text-xl font-bold text-indigo-500">SwiftCart</a>
+          <a href="./index.html" class="text-xl font-bold text-indigo-500"
+            >SwiftCart</a
+          >
         </section>
 
         <!-- Center: Menu (Hidden on mobile) -->
@@ -61,15 +59,24 @@
               >
             </li>
             <li>
-              <a
-                href="./products.html"
-                id="product_route"
-                class="hover:text-indigo-500 transition"
+              <a href="./products.html" class="hover:text-indigo-500 transition"
                 >Products</a
               >
             </li>
-            <li><a href="./about.html" class="hover:text-indigo-500 transition">About</a></li>
-            <li><a href="./contact.html" class="hover:text-indigo-500 transition">Contact</a></li>
+            <li>
+              <a
+                href="./about.html"
+                id="about_route"
+                class="hover:text-indigo-500 transition"
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a href="./contact.html" class="hover:text-indigo-500 transition"
+                >Contact</a
+              >
+            </li>
           </ul>
         </section>
 
@@ -148,10 +155,33 @@
               tabindex="0"
               class="dropdown-content menu p-2 shadow bg-slate-100 rounded-box w-52 text-sm font-medium text-slate-600"
             >
-              <li><a href="./index.html" class="hover:text-indigo-500 transition">Home</a></li>
-              <li><a href="./products.html" id="product_route" class="hover:text-indigo-500 transition">Products</a></li>
-              <li><a class="hover:text-indigo-500 transition">About</a></li>
-              <li><a class="hover:text-indigo-500 transition">Contact</a></li>
+              <li>
+                <a href="./index.html" class="hover:text-indigo-500 transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./products.html"
+                  class="hover:text-indigo-500 transition"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./about.html"
+                  id="about_route"
+                  class="hover:text-indigo-500 transition"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./contact.html"
+                  class="hover:text-indigo-500 transition"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
         </section>
@@ -159,57 +189,173 @@
     </header>
 
     <!-- Main Section -->
-    <main class="flex-1 mt-2.5 mb-10">
-      <!-- Categories and Products Section -->
-      <section>
-        <h1 class="text-3xl font-bold text-center my-8">Our Products</h1>
-
-        <!-- Category Container -->
+    <main class="flex-1">
+      <!-- Hero Section -->
+      <section
+        class="relative h-[300px] flex items-center bg-gradient-to-r from-indigo-500 to-purple-600"
+      >
         <div
-          id="category-container"
-          class="flex flex-wrap justify-center items-center gap-2.5 md:gap-5 my-8"
-        ></div>
-
-        <!-- Spinner Section -->
-        <div id="spinner" class="relative hidden">
-          <span
-            class="absolute left-1/2 top-4 loading loading-spinner text-primary text-xl transform -translate-x-1/2 -translate-y-1/2"
-          ></span>
-        </div>
-
-        <!-- Card Container -->
-        <div
-          id="card-container"
-          class="w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-self-center gap-5 lg:gap-8 p-5 lg:p-8 rounded-xl"
+          class="relative max-w-7xl mx-auto px-6 text-white text-center w-full"
         >
-          <div class="text-center col-span-full">
-            <figure>
-              <img
-                src="./assets/alert-error.png"
-                alt="Alert Image"
-                class="w-24 h-24 mx-auto mt-4 opacity-50"
-              />
-              <figcaption class="text-xl font-semibold text-gray-500">
-                Please select a category
-              </figcaption>
-            </figure>
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+            About SwiftCart
+          </h1>
+          <p class="text-indigo-100 text-lg">
+            Your trusted destination for quality products and exceptional
+            service
+          </p>
+        </div>
+      </section>
+
+      <!-- About Content Section -->
+      <section class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+          <!-- Our Story -->
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-4">
+              SwiftCart was founded with a simple mission: to make online
+              shopping fast, easy, and enjoyable for everyone. We believe in
+              providing quality products at competitive prices, combined with
+              exceptional customer service that sets us apart from the
+              competition.
+            </p>
+            <p class="text-gray-600 text-lg leading-relaxed">
+              Since our inception, we've grown to serve thousands of satisfied
+              customers across the globe. Our commitment to excellence in every
+              aspect of the shopping experience has made us the preferred choice
+              for smart shoppers.
+            </p>
+          </div>
+
+          <!-- Mission & Vision -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <!-- Mission -->
+            <div class="bg-indigo-50 p-8 rounded-xl">
+              <div class="flex items-center gap-4 mb-4">
+                <div
+                  class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-bullseye text-white text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800">Our Mission</h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed">
+                To empower customers by providing a seamless, secure, and
+                convenient online shopping experience with diverse product
+                selection, competitive pricing, and outstanding customer
+                support.
+              </p>
+            </div>
+
+            <!-- Vision -->
+            <div class="bg-purple-50 p-8 rounded-xl">
+              <div class="flex items-center gap-4 mb-4">
+                <div
+                  class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center"
+                >
+                  <i class="fa-solid fa-eye text-white text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800">Our Vision</h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed">
+                To become the most trusted e-commerce platform globally, known
+                for innovation, reliability, and customer-centric solutions that
+                transform the way people shop online.
+              </p>
+            </div>
+          </div>
+
+          <!-- Why Choose Us -->
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">
+              Why Choose SwiftCart?
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <!-- Feature 1 -->
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fa-solid fa-rocket text-indigo-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-2">
+                  Fast & Reliable
+                </h3>
+                <p class="text-gray-600 text-sm">
+                  Quick delivery and reliable service you can count on
+                </p>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i
+                    class="fa-solid fa-shield-halved text-indigo-600 text-2xl"
+                  ></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-2">Secure Payment</h3>
+                <p class="text-gray-600 text-sm">
+                  Your transactions are protected with advanced encryption
+                </p>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i
+                    class="fa-solid fa-headphones text-indigo-600 text-2xl"
+                  ></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-2">24/7 Support</h3>
+                <p class="text-gray-600 text-sm">
+                  Our team is always ready to help you
+                </p>
+              </div>
+
+              <!-- Feature 4 -->
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <i class="fa-solid fa-star text-indigo-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-2">
+                  Quality Products
+                </h3>
+                <p class="text-gray-600 text-sm">
+                  Curated selection of the best brands
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Section -->
+          <div
+            class="bg-gradient-to-r from-indigo-50 to-purple-50 p-12 rounded-xl text-center"
+          >
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">
+              Our Dedicated Team
+            </h2>
+            <p class="text-gray-600 mb-4">
+              Behind SwiftCart is a passionate team of professionals committed
+              to delivering excellence in every interaction. We work tirelessly
+              to ensure your shopping experience is smooth and satisfying.
+            </p>
+            <div class="mt-8">
+              <p class="text-indigo-600 font-semibold">Made with ❤️ by Shad</p>
+            </div>
           </div>
         </div>
-
-        <!-- Modal Section -->
-        <dialog id="product_details" class="modal modal-bottom sm:modal-middle">
-          <div class="modal-box">
-            <div id="product-details-container"></div>
-          </div>
-          <form method="dialog" class="modal-backdrop">
-            <button>close</button>
-          </form>
-        </dialog>
       </section>
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-slate-800 text-slate-300">
+    <footer class="bg-slate-800 text-slate-300 mt-16">
       <section class="max-w-7xl mx-auto px-6 py-16">
         <!-- Main Footer Content -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -229,13 +375,25 @@
               Quick Links
             </h3>
             <ul class="space-y-3 text-sm">
-              <li><a href="#" class="hover:text-white transition">Home</a></li>
               <li>
-                <a href="#" class="hover:text-white transition">Products</a>
+                <a href="./index.html" class="hover:text-white transition"
+                  >Home</a
+                >
               </li>
-              <li><a href="#" class="hover:text-white transition">About</a></li>
               <li>
-                <a href="#" class="hover:text-white transition">Contact</a>
+                <a href="./products.html" class="hover:text-white transition"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a href="./about.html" class="hover:text-white transition"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a href="./contact.html" class="hover:text-white transition"
+                  >Contact</a
+                >
               </li>
             </ul>
           </div>

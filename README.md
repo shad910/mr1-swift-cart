@@ -139,8 +139,10 @@ All product data is fetched from the **FakeStore API**. Below are the endpoints 
 
 ```
 mr1-swift-cart/
-├── index.html              # Home page with featured products
+├── index.html              # Home page with featured products and hero section
 ├── products.html           # Products page with category filtering
+├── about.html              # About page with company story, mission & vision
+├── contact.html            # Contact page with contact form and FAQ section
 ├── README.md               # Project documentation
 ├── tailwind.config.js      # Tailwind CSS configuration
 ├── assets/                 # Static assets
@@ -149,7 +151,7 @@ mr1-swift-cart/
 │   ├── alert-error.png
 │   └── reference-design/
 ├── scripts/
-│   └── index.js            # Main JavaScript file (used by both pages)
+│   └── index.js            # Main JavaScript file (used by all pages)
 └── utilities/              # Utility files (if any)
 ```
 

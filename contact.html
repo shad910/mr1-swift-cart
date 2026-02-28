@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title and Favicon -->
+    <title>Contact Us - Swift Cart</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/swift-cart-logo.png"
+      type="image/x-icon"
+    />
+
+    <!-- Tailwind CSS CDN Version 4.1 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- DaisyUI CDN Version 5.5.18 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome CDN Version 6 -->
+    <script
+      src="https://kit.fontawesome.com/89cee7f055.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Style Section -->
+    <style>
+      #contact_route {
+        color: #615fff;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col">
+    <!-- Header Section -->
+    <header>
+      <!-- Navbar Section-->
+      <nav class="navbar lg:w-11/12 mx-auto">
+        <!-- Left: Logo -->
+        <section class="navbar-start">
+          <a href="./index.html" class="text-xl font-bold text-indigo-500"
+            >SwiftCart</a
+          >
+        </section>
+
+        <!-- Center: Menu (Hidden on mobile) -->
+        <section class="navbar-center hidden md:flex">
+          <ul
+            class="menu menu-horizontal px-1 text-sm font-medium text-slate-600"
+          >
+            <li>
+              <a href="./index.html" class="hover:text-indigo-500 transition"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="./products.html" class="hover:text-indigo-500 transition"
+                >Products</a
+              >
+            </li>
+            <li>
+              <a href="./about.html" class="hover:text-indigo-500 transition"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="./contact.html"
+                id="contact_route"
+                class="hover:text-indigo-500 transition"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Right: Cart Icon + Mobile Menu Button -->
+        <section class="navbar-end flex items-center gap-2">
+          <!-- Cart Dropdown -->
+          <div class="dropdown dropdown-end">
+            <div
+              tabindex="0"
+              role="button"
+              class="btn btn-ghost btn-circle hover:text-indigo-500"
+            >
+              <div class="indicator">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span id="cart-count" class="badge badge-sm indicator-item"
+                  >0</span
+                >
+              </div>
+            </div>
+
+            <div
+              tabindex="0"
+              class="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-64 shadow"
+            >
+              <div class="card-body">
+                <span id="cart-items-text" class="text-lg font-bold"
+                  >0 Items</span
+                >
+                <div id="cart-items-list" class="flex flex-col gap-2"></div>
+                <span id="cart-subtotal" class="text-info mt-2.5"
+                  >Subtotal: $0</span
+                >
+                <div class="card-actions">
+                  <button
+                    class="btn btn-block bg-indigo-500 hover:bg-indigo-600 border-none text-white"
+                  >
+                    <i class="fa-solid fa-dollar-sign"></i> Buy Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Toggle (Visible on small screens) -->
+          <div class="dropdown dropdown-end md:hidden">
+            <label tabindex="0" class="btn btn-ghost btn-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabindex="0"
+              class="dropdown-content menu p-2 shadow bg-slate-100 rounded-box w-52 text-sm font-medium text-slate-600"
+            >
+              <li>
+                <a href="./index.html" class="hover:text-indigo-500 transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./products.html"
+                  class="hover:text-indigo-500 transition"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a href="./about.html" class="hover:text-indigo-500 transition"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./contact.html"
+                  id="contact_route"
+                  class="hover:text-indigo-500 transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+      </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main class="flex-1">
+      <!-- Hero Section -->
+      <section
+        class="relative h-[300px] flex items-center bg-gradient-to-r from-indigo-500 to-purple-600"
+      >
+        <div
+          class="relative max-w-7xl mx-auto px-6 text-white text-center w-full"
+        >
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+            Get In Touch
+          </h1>
+          <p class="text-indigo-100 text-lg">
+            We'd love to hear from you. Contact us for any inquiries or support.
+          </p>
+        </div>
+      </section>
+
+      <!-- Contact Content Section -->
+      <section class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+          <!-- Contact Info Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <!-- Email Card -->
+            <div
+              class="bg-white p-8 rounded-xl shadow-md border border-gray-100"
+            >
+              <div
+                class="flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-lg mb-4 mx-auto"
+              >
+                <i class="fa-solid fa-envelope text-indigo-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-center text-gray-800 mb-2">
+                Email
+              </h3>
+              <p class="text-center text-gray-600">
+                <a
+                  href="mailto:shadshs91@gmail.com"
+                  class="text-indigo-600 hover:text-indigo-500"
+                >
+                  shadshs91@gmail.com
+                </a>
+              </p>
+            </div>
+
+            <!-- Phone Card -->
+            <div
+              class="bg-white p-8 rounded-xl shadow-md border border-gray-100"
+            >
+              <div
+                class="flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-lg mb-4 mx-auto"
+              >
+                <i class="fa-solid fa-phone text-indigo-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-center text-gray-800 mb-2">
+                Phone
+              </h3>
+              <p class="text-center text-gray-600">
+                Available 24/7 for customer support
+              </p>
+            </div>
+
+            <!-- Location Card -->
+            <div
+              class="bg-white p-8 rounded-xl shadow-md border border-gray-100"
+            >
+              <div
+                class="flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-lg mb-4 mx-auto"
+              >
+                <i class="fa-solid fa-location-dot text-indigo-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-center text-gray-800 mb-2">
+                Location
+              </h3>
+              <p class="text-center text-gray-600">
+                Global shipping available worldwide
+              </p>
+            </div>
+          </div>
+
+          <!-- Contact Form Section -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+            <!-- Form -->
+            <div class="lg:col-span-2">
+              <div
+                class="bg-white p-8 rounded-xl shadow-md border border-gray-100"
+              >
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                  Send us a Message
+                </h2>
+                <form class="space-y-4">
+                  <!-- Name -->
+                  <div>
+                    <label class="label">
+                      <span class="label-text font-semibold">Your Name</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter your full name"
+                      class="input input-bordered w-full bg-gray-50 focus:bg-white"
+                    />
+                  </div>
+
+                  <!-- Email -->
+                  <div>
+                    <label class="label">
+                      <span class="label-text font-semibold"
+                        >Email Address</span
+                      >
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      class="input input-bordered w-full bg-gray-50 focus:bg-white"
+                    />
+                  </div>
+
+                  <!-- Subject -->
+                  <div>
+                    <label class="label">
+                      <span class="label-text font-semibold">Subject</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="What is this about?"
+                      class="input input-bordered w-full bg-gray-50 focus:bg-white"
+                    />
+                  </div>
+
+                  <!-- Message -->
+                  <div>
+                    <label class="label">
+                      <span class="label-text font-semibold">Message</span>
+                    </label>
+                    <textarea
+                      class="textarea textarea-bordered w-full bg-gray-50 focus:bg-white"
+                      placeholder="Tell us more about your inquiry..."
+                      rows="5"
+                    ></textarea>
+                  </div>
+
+                  <!-- Submit Button -->
+                  <button
+                    type="submit"
+                    class="btn bg-indigo-500 hover:bg-indigo-600 border-none text-white w-full"
+                  >
+                    <i class="fa-solid fa-paper-plane"></i> Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Contact Details -->
+            <div>
+              <div
+                class="bg-gradient-to-br from-indigo-500 to-purple-600 p-8 rounded-xl text-white"
+              >
+                <h3 class="text-2xl font-bold mb-6">Quick Response</h3>
+
+                <div class="space-y-6">
+                  <div>
+                    <h4 class="font-semibold mb-2 flex items-center gap-2">
+                      <i class="fa-solid fa-clock"></i> Response Time
+                    </h4>
+                    <p class="text-indigo-100">Usually within 2 hours</p>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold mb-2 flex items-center gap-2">
+                      <i class="fa-solid fa-headphones"></i> Support Hours
+                    </h4>
+                    <p class="text-indigo-100">24/7 Available</p>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold mb-2 flex items-center gap-2">
+                      <i class="fa-solid fa-globe"></i> Language
+                    </h4>
+                    <p class="text-indigo-100">English & Bengali</p>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold mb-2 flex items-center gap-2">
+                      <i class="fa-solid fa-share-nodes"></i> Follow Us
+                    </h4>
+                    <div class="flex gap-3 mt-2">
+                      <a
+                        href="https://www.facebook.com/shadshs91/"
+                        class="hover:text-indigo-200 transition"
+                      >
+                        <i class="fa-brands fa-facebook-f"></i>
+                      </a>
+                      <a
+                        href="https://x.com/shadshs91"
+                        class="hover:text-indigo-200 transition"
+                      >
+                        <i class="fa-brands fa-twitter"></i>
+                      </a>
+                      <a
+                        href="https://www.instagram.com/shadshs91/"
+                        class="hover:text-indigo-200 transition"
+                      >
+                        <i class="fa-brands fa-instagram"></i>
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/md-sahadot-hossen-shad-838251345/"
+                        class="hover:text-indigo-200 transition"
+                      >
+                        <i class="fa-brands fa-linkedin-in"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="bg-gray-50 p-8 rounded-xl mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+              Frequently Asked Questions
+            </h2>
+            <div class="space-y-4">
+              <!-- FAQ 1 -->
+              <div
+                class="collapse collapse-plus bg-white border border-gray-200"
+              >
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title text-lg font-semibold text-gray-800">
+                  How can I track my order?
+                </div>
+                <div class="collapse-content">
+                  <p class="text-gray-600">
+                    You can track your order in real-time through your account
+                    dashboard. Once your order ships, you'll receive a tracking
+                    number via email.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 2 -->
+              <div
+                class="collapse collapse-plus bg-white border border-gray-200"
+              >
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title text-lg font-semibold text-gray-800">
+                  What is your return policy?
+                </div>
+                <div class="collapse-content">
+                  <p class="text-gray-600">
+                    We offer a 30-day return policy for all products in original
+                    condition. Simply contact our support team to initiate the
+                    return process.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 3 -->
+              <div
+                class="collapse collapse-plus bg-white border border-gray-200"
+              >
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title text-lg font-semibold text-gray-800">
+                  Do you offer international shipping?
+                </div>
+                <div class="collapse-content">
+                  <p class="text-gray-600">
+                    Yes, we ship to countries worldwide! Shipping costs and
+                    delivery times vary by location.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ 4 -->
+              <div
+                class="collapse collapse-plus bg-white border border-gray-200"
+              >
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title text-lg font-semibold text-gray-800">
+                  Is my payment information secure?
+                </div>
+                <div class="collapse-content">
+                  <p class="text-gray-600">
+                    Absolutely! We use SSL encryption and comply with all
+                    security standards to protect your payment information.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-800 text-slate-300 mt-16">
+      <section class="max-w-7xl mx-auto px-6 py-16">
+        <!-- Main Footer Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div>
+            <h2 class="text-2xl font-bold text-indigo-400 mb-4">SwiftCart</h2>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Your one-stop shop for all your fashion and lifestyle needs.
+              Quality products, fast delivery, and excellent support.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3
+              class="text-sm font-semibold tracking-wider text-slate-200 uppercase mb-4"
+            >
+              Quick Links
+            </h3>
+            <ul class="space-y-3 text-sm">
+              <li>
+                <a href="./index.html" class="hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="./products.html" class="hover:text-white transition"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a href="./about.html" class="hover:text-white transition"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a href="./contact.html" class="hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Support -->
+          <div>
+            <h3
+              class="text-sm font-semibold tracking-wider text-slate-200 uppercase mb-4"
+            >
+              Support
+            </h3>
+            <ul class="space-y-3 text-sm">
+              <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+              <li>
+                <a href="#" class="hover:text-white transition">Shipping</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition">Returns</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div>
+            <h3
+              class="text-sm font-semibold tracking-wider text-slate-200 uppercase mb-4"
+            >
+              Subscribe to our newsletter
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              The latest news, articles, and resources, sent to your inbox
+              weekly.
+            </p>
+
+            <div class="md:flex gap-2">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                class="flex-1 input input-bordered w-full bg-slate-700 border-slate-600 text-slate-200 placeholder:text-slate-400 focus:outline-none focus:border-indigo-500"
+              />
+              <button
+                class="w-full md:w-auto btn bg-indigo-500 hover:bg-indigo-600 border-none text-white mt-2 md:mt-0"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div
+          class="border-t border-slate-700 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between gap-4"
+        >
+          <p class="text-sm text-slate-400">
+            &copy; 2025 SwiftCart, Inc. All rights reserved.
+          </p>
+
+          <!-- Social Icons and Links -->
+          <div class="flex gap-4 text-slate-400">
+            <a
+              href="https://www.facebook.com/shadshs91/"
+              class="hover:text-white transition"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://x.com/shadshs91"
+              class="hover:text-white transition"
+            >
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/shadshs91/"
+              class="hover:text-white transition"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/md-sahadot-hossen-shad-838251345/"
+              class="hover:text-white transition"
+            >
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a
+              href="mailto:shadshs91@gmail.com"
+              class="hover:text-white transition"
+            >
+              <i class="fa-regular fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </footer>
+
+    <!-- JavaScript Section -->
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>
